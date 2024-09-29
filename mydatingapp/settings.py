@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',  # For allauth
     'accounts',              # Your accounts app
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# curl -X POST http://127.0.0.1:8000/accounts/api/logout/
+# curl -X POST http://127.0.0.1:8000/accounts/api/login/ -H "Content-Type: application/json" -d '{"username":"newuser","password":"yourpassword"}'
 ROOT_URLCONF = 'mydatingapp.urls'
 
 TEMPLATES = [
