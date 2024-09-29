@@ -6,13 +6,74 @@
     <title>Oasis for Devils Dashboard</title>
     <!--Our CSS-->
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #ffc626;
+            color: white;
+        }
+        .navbar .left, .navbar .center, .navbar .right {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .left {
+            flex: 1;
+        }
+        .navbar .center {
+            flex: 2;
+            flex-direction: column;
+            align-items: center;
+        }
+        .navbar .right {
+            flex: 1;
+            justify-content: flex-end;
+        }
+        .navbar .hamburger {
+            cursor: pointer;
+        }
+        .navbar .hero-text {
+            font-size: 24px;
+            margin: 0;
+        }
+        .navbar .search-bar {
+            margin-top: 5px;
+        }
+        .navbar input[type="text"] {
+            padding: 5px;
+            width: 100%;
+            max-width: 300px;
+        }
+        .navbar .profile-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
   </head>
   <body>
-    <div class="parent">
-        <nav>
-
-        </nav>
-    </div>
+    <nav class="navbar">
+        <div class="left">
+            <div class="hamburger">☰</div>
+        </div>
+        <div class="center">
+            <div class="hero-text">Oasis for Devils</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+        </div>
+        <div class="right">
+            <button class="profile-button">Profile</button>
+        </div>
+    </nav>
     <div class="container"></div>
         <div class="feed-container">
             <div class="post">
