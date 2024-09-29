@@ -50,11 +50,18 @@
             max-width: 300px;
         }
         .navbar .profile-button {
-            background-color: #555;
-            color: white;
-            border: none;
-            padding: 10px 20px;
             cursor: pointer;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+        }
+        a {
+            color: #000;
+font-family: "Jersey 25";
+font-style: normal;
+font-weight: 400;
+line-height: normal;
         }
     </style>
   </head>
@@ -72,7 +79,18 @@
         <div class="right">
             <button class="profile-button">Profile</button>
         </div>
+        <div class="right">
+            <button>Notifications</button>
+        </div>
     </nav>
+    <!--Sidebar-->
+    <div class="sidebar">
+        <a href="#">Friends</a>
+        <a href="#">Meet Stranger</a>
+        <a href="#">Messages</a>
+        <a href="#">Settings</a>
+    </div>
+    <!--Container for posts-->
     <div class="container"></div>
         <div class="feed-container">
             <div class="post">
