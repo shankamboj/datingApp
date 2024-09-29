@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from .forms import UserRegisterForm
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 
 class UserRegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -29,7 +30,14 @@ class UserLoginView(generics.GenericAPIView):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
+              # Get or create a token for the user
+            token, created = Token.objects.get_or_create(user=user)
+
+            return Response({
+                "message": "Login successful",
+                "token": token.key  # Return the token key
+            }, status=status.HTTP_200_OK)
+
         return Response({"error": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
 @method_decorator(csrf_exempt, name='dispatch')
 class UserLogoutView(generics.GenericAPIView):
