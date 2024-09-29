@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import register, home
-from .api_views import UserRegisterView, UserLoginView, UserLogoutView
+from .api_views import UserRegisterView, UserLoginView, UserLogoutView, HelloWorldView
 
 urlpatterns = [
     path('register/', register, name='register'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('api/register/', UserRegisterView.as_view(), name='api_register'),
     path('api/login/', UserLoginView.as_view(), name='api_login'),
     path('api/logout/', UserLogoutView.as_view(), name='api_logout'),
+    path('api/hello/', HelloWorldView.as_view(), name='api_hello'),  # New endpoint
 ]

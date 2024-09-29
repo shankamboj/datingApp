@@ -1,6 +1,7 @@
 from rest_framework import generics
+from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
@@ -33,7 +34,12 @@ class UserLoginView(generics.GenericAPIView):
 @method_decorator(csrf_exempt, name='dispatch')
 class UserLogoutView(generics.GenericAPIView):
     permission_classes = [AllowAny]
-    
+
     def post(self, request, *args, **kwargs):
         logout(request)
         return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
+class HelloWorldView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"message": "Hello, World!"})
