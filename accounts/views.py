@@ -78,3 +78,8 @@ class AllUsersView(generics.GenericAPIView):
         return Response(user_data)
 def home(request):
     return render(request, 'accounts/home.html')
+
+def dashboard(request):
+    all_users_view = AllUsersView()
+    user_data = all_users_view.get({})
+    return render(request, 'accounts/dashboard.html', {'data': user_data})

@@ -1,17 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oasis for Devils Dashboard</title>
-    <!--Our CSS-->
+    <script>
+
+        async function fetchData() {
+            try {
+                const response = await fetch('/accounts/api/all-users/');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                displayData(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function displayData(data) {
+            const container = document.getElementById('data-container');
+            container.innerHTML = `
+                <p>Key: ${data.key}</p>
+                <p>Items: ${data.items.join(', ')}</p>
+            `;
+        }
+
+        // Call the fetchData function when the page loads
+        window.onload = fetchData;
+
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            if (navLinks.style.display === 'block') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'block';
+            }
+        } </script>
+    <style>
+        .feed-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .post-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .post-content {
+            margin-top: 10px;
+        }
+
+        nav {
+            background: #ffc626;
+        }
+    </style>
+    <!-- Our CSS
     <link rel="stylesheet" href="../styles/styles.css" />
-    <script defer src="../scripts/index.js"></script>
+    <script defer src="../scripts/index.js"></script> -->
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
         }
+
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -19,54 +82,68 @@
             padding: 10px 20px;
             background-color: #ffc626;
         }
-        .navbar .left, .navbar .center, .navbar .right {
+
+        .navbar .left,
+        .navbar .center,
+        .navbar .right {
             display: flex;
             align-items: center;
         }
+
         .navbar .left {
             flex: 1;
         }
+
         .navbar .center {
             flex: 2;
             flex-direction: column;
             align-items: center;
         }
+
         .navbar .right {
             flex: 1;
             justify-content: flex-end;
         }
+
         .navbar .hamburger {
             cursor: pointer;
         }
+
         .navbar .hero-text {
             font-size: 24px;
             margin: 0;
         }
+
         .navbar .search-bar {
             margin-top: 5px;
         }
+
         .navbar input[type="text"] {
             padding: 5px;
             width: 100%;
             max-width: 300px;
         }
+
         .navbar .profile-button {
             cursor: pointer;
         }
+
         .sidebar {
             display: flex;
             flex-direction: column;
         }
+
         a {
             color: #000;
-font-family: "Jersey 25";
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+            font-family: "Jersey 25";
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <nav class="navbar">
         <div class="left">
             <div class="hamburger">☰</div>
@@ -93,18 +170,16 @@ line-height: normal;
     </div>
     <!--Container for posts-->
     <div class="container"></div>
-        <div class="feed-container">
-            <div class="post">
-                <div class="post-title">Post Title 1</div>
-                <div class="post-content">This is the content of the first post.</div>
-            </div>
-            <div class="post">
-                <div class="post-title">Post Title 2</div>
-                <div class="post-content">This is the content of the second post.</div>
-            </div>
-            <div class="post">
-                <div class="post-title">Post Title 3</div>
-                <div class="post-content">This is the content of the third post.</div>
-            </div>
-  </body>
+    <div class="feed-container">
+
+        {% for item in data.data %}
+        <div class="post">
+            <div class="post-title">{{item.username}}</div>
+            <div class="post-content">{{item.email}}</div>
+        </div>
+        {% empty %}
+        {% endfor %}
+    
+</body>
+
 </html>
