@@ -1,18 +1,31 @@
 .feed-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
 }
 .post {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 .post-title {
-    font-size: 1.25rem;
-    font-weight: bold;
+  font-size: 1.25rem;
+  font-weight: bold;
 }
 .post-content {
-    margin-top: 10px;
+  margin-top: 10px;
+}
+
+.parent {
+    display:  flex or inline-flex;
+    flex-direction: row  or column;
+    flex-wrap: wrap or wrap-reverse;
+   }
+
+nav {
+  width: 1440px;
+  height: 254px;
+  flex-shrink: 0;
+  background: #ffc626;
 }
