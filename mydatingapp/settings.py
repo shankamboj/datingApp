@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',  # For allauth
     'accounts',              # Your accounts app
-    'rest_framework'
+    'rest_framework',
+    'rest_framework.authtoken',  # Add this line
 ]
 
 MIDDLEWARE = [
