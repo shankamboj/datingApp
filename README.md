@@ -1,7 +1,5 @@
 # Devils' Oasis
 
-Description of project here.
-
 ## Table of Contents
 
 - [Devils' Oasis](#devils-oasis)
